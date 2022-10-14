@@ -8,6 +8,12 @@ import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
+
+/*
+ * Purpose : MentorModel is Used to Transfer the Data into Database
+ * Version : 1.0
+ * @author : Sravan Kumar
+ * */
 @Entity
 @Table(name = "mentors")
 @Data

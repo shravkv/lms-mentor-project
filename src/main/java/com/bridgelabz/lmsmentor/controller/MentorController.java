@@ -20,6 +20,12 @@ public class MentorController {
     @Autowired
     IMentorService mentorService;
 
+    /*
+     * Purpose : Create Mentor Details
+     * @author : Sravan Kumar
+     * @Param : mentorDTO and token
+     */
+
 
     @PostMapping("/addMentor")
     public ResponseEntity<Response> addMentor(@RequestHeader String token,
@@ -28,7 +34,11 @@ public class MentorController {
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
-
+    /*
+     * Purpose : Add ProfilePic Url to Mentor
+     * @author : Sravan Kumar
+     * @Param :  token,profilePic and id
+     * */
     @PostMapping("/addProfilePicUrl")
     public ResponseEntity<Response> addProfilePic(@RequestHeader String token, @RequestParam String profilePic,
                                                   @RequestParam Long id) {
@@ -36,12 +46,23 @@ public class MentorController {
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
+    /*
+     * Purpose : Retrieve all Metors Details
+     * @author : Sravan Kumar
+     * @Param :  token
+     * */
 
     @GetMapping("/getAllMentrs")
     public ResponseEntity<List<?>> getAllMentors(@RequestHeader String token) {
         List<MentorModel> response = mentorService.getAllMentors(token);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
+
+    /*
+     * Purpose : Update Existing Mentor Details
+     * @author : Sravan Kumar
+     * @Param :  mentorsDTO,token and id
+     * */
 
 
     @PutMapping("/updateMentorDetails/{id}")
@@ -52,6 +73,12 @@ public class MentorController {
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
+    /*
+     * Purpose : Delete Existing Mentor Details
+     * @author : Sravan Kumar
+     * @Param :  id and token
+     * */
+
 
     @DeleteMapping("/deleteMentorDetails/{id}")
     public ResponseEntity<Response> deleteDetails(@RequestHeader String token,
@@ -59,6 +86,12 @@ public class MentorController {
         Response response = mentorService.deleteDetails(token, id);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
+
+    /*
+     * Purpose : Retrieve Particular Mentor By id
+     * @author : Stavan Kumar
+     * @Param :  id and token
+     * */
 
 
     @GetMapping("/getMentorById/{id}")
@@ -68,12 +101,24 @@ public class MentorController {
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
+    /*
+     * Purpose : Retrieve All Mentors Count
+     * @author : Sravan Kumar
+     * @Param :  token
+     * */
+
 
     @GetMapping("/mentorsCont")
     public ResponseEntity<Long> mentorsCount(@RequestHeader String token) {
         Long response = mentorService.mentorsCount(token);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
+
+    /*
+     * Purpose : Retrieve Mentor Details By mentorRole
+     * @author : Sravan Kumar
+     * @Param :  token and mentorRole
+     * */
 
 
     @GetMapping("/getMentorByRole")
@@ -82,6 +127,8 @@ public class MentorController {
         Long response = mentorService.getMentorByRole(mentorRole,token);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
+
+    // Without Query get Count
 
     @GetMapping("/getAllCount")
     public ResponseEntity<Long> getAllCount(@RequestHeader String token) {

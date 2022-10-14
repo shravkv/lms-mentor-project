@@ -9,10 +9,22 @@ import com.auth0.jwt.interfaces.DecodedJWT;
 import com.auth0.jwt.interfaces.Verification;
 import org.springframework.stereotype.Component;
 
+
+/*
+ * Purpose : TokenUtil to Process the Tokens
+ * Version : 1.0
+ * @author : Sravan Kumar
+ * */
 @Component
 public class TokenUtil {
 
     private final String TOKEN_SECRET = "LoginToken";
+
+    /*
+     * Purpose : Implement the Logic for Creating a Token
+     * @author : Sravan Kumar
+     * @Param :  id
+     * */
 
 
     public String createToken(Long id) {
@@ -24,6 +36,12 @@ public class TokenUtil {
         }
         return null;
     }
+
+    /*
+     * Purpose : Implement the Logic to Decode a Token
+     * @author : Sravan Kumar
+     * @Param :  token
+     * */
 
     public Long decodeToken(String token) {
         Long userId;

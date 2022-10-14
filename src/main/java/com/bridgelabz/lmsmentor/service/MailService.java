@@ -6,6 +6,12 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Component;
 
 
+/*
+ * Purpose : MailService is  used to Send a mail
+ * Version : 1.0
+ * @author : Sravan Kumar
+ * */
+
 @Component
 
 public class MailService {

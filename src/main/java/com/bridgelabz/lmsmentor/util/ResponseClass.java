@@ -4,6 +4,12 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+
+/*
+ * Purpose : ResponseClass Used to Handle Exception
+ * Version : 1.0
+ * @author : Sravan Kumar
+ * */
 @AllArgsConstructor
 @NoArgsConstructor
 @Data

@@ -6,6 +6,12 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import java.time.LocalDate;
 
+
+/*
+ * Purpose : MentorsDTO fields are Used to Create and Update Mentors Details
+ * Version : 1.0
+ * @author : Sravan Kumar
+ * */
 @Data
 public class MentorDTO {
 

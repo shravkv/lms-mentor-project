@@ -14,6 +14,12 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
+/*
+ * Purpose : MentorService is used to Implement the Business Logic
+ * Version : 1.0
+ * @author : Sravan Kumar
+ * */
+
 @Service
 public class MentorService implements IMentorService {
 
@@ -26,11 +32,17 @@ public class MentorService implements IMentorService {
     @Autowired
     RestTemplate restTemplate;
 
+    /*
+     * Purpose : Implement the Logic for Creating Mentor Details
+     * @author : Sravan Kumar
+     * @Param :  token and mentorsDTO
+     * */
+
     @Override
-    public Response addMentor(String token, MentorDTO mentorsDTO) {
+    public Response addMentor(String token, MentorDTO mentorDTO) {
         boolean isUserPresent = restTemplate.getForObject("http://localhost:8080/admin/validate/" + token, Boolean.class);
         if (isUserPresent) {
-            MentorModel mentorModel = new MentorModel(mentorsDTO);
+            MentorModel mentorModel = new MentorModel(mentorDTO);
             mentorModel.setCreatedTimeStamp(LocalDateTime.now());
             mentorRepository.save(mentorModel);
             String body = "Mentor Added Successfully With Id is : " + mentorModel.getId();
@@ -41,6 +53,12 @@ public class MentorService implements IMentorService {
         throw new LMSException(400, "Token Wrong");
 
     }
+
+    /*
+     * Purpose : Implement the Logic for Adding Mentor profilePic
+     * @author : Sravan Kumar
+     * @Param :  token,id and profilePic
+     * */
 
     @Override
     public Response addProfilePic(String token, Long id, String profilePic) {
@@ -62,6 +80,12 @@ public class MentorService implements IMentorService {
 
     }
 
+    /*
+     * Purpose : Implement the Logic to Get All Mentors Details
+     * @author : Sravan Kumar
+     * @Param :  token
+     * */
+
 
     @Override
     public List<MentorModel> getAllMentors(String token) {
@@ -76,6 +100,12 @@ public class MentorService implements IMentorService {
         }
         throw new LMSException(400, "Token Wrong");
     }
+
+    /*
+     * Purpose : Implement the Logic to Update Mentor Details
+     * @author : Sravan Kumar
+     * @Param :  token,id and mentorsDTO
+     * */
 
     @Override
     public Response updateMentorDetails(String token, Long id, MentorDTO mentorDTO) {
@@ -110,6 +140,12 @@ public class MentorService implements IMentorService {
         throw new LMSException(400, "Token Wrong");
     }
 
+    /*
+     * Purpose : Implement the Logic for Deleting Mentors Details
+     * @author : Sravan Kumar
+     * @Param :  token and id
+     * */
+
 
     @Override
     public Response deleteDetails(String token, Long id) {
@@ -131,6 +167,12 @@ public class MentorService implements IMentorService {
 
     }
 
+    /*
+     * Purpose : Implement the Logic to Get Mentors Details By I'd
+     * @author : Sravan Kumar
+     * @Param :  token and bankDetailsDTO
+     * */
+
 
     @Override
     public Response getMentorsDetailsById(String token, Long id) {
@@ -146,6 +188,12 @@ public class MentorService implements IMentorService {
         throw new LMSException(400, "Token Wrong");
     }
 
+    /*
+     * Purpose : Implement the Logic to Get All Mentors Count
+     * @author : Sravan Kumar
+     * @Param :  token and bankDetailsDTO
+     * */
+
 
     @Override
     public Long mentorsCount(String token) {
@@ -156,6 +204,11 @@ public class MentorService implements IMentorService {
         }
         throw new LMSException(400, "Token Wrong");
     }
+    /*
+     * Purpose : Implement the Logic to Get Mentor Detail By Role
+     * @author : Sravan Kumar
+     * @Param :  token and bankDetailsDTO
+     * */
 
 
     @Override
@@ -167,6 +220,8 @@ public class MentorService implements IMentorService {
         }
         throw new LMSException(400, "Token Wrong");
     }
+
+    //Without Query get count;
 
     @Override
     public Long getAllCount(String token) {
