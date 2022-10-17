@@ -13,6 +13,8 @@ import java.time.LocalDate;
  * @author : Sravan Kumar
  * */
 @Data
+@NotNull
+
 public class MentorDTO {
 
     @NotNull(message = "employeeId can't be empty")
